@@ -13,8 +13,21 @@ def main():
     parser_update.add_argument('task_id',type=int,help='The id number of the task you want to update')
     parser_update.add_argument('description',type=str,help='Description of the task you are updating')
     
+    parser_delete = subparsers.add_parser('delete',help='Command to delete a task')
+    parser_delete.add_argument('task_id',type=int,help='The id number of the task you want to delete')
+
+    parser_mark_in_progress = subparsers.add_parser('mark-in-progress',help='Command to mark a task in progress')
+    parser_mark_in_progress.add_argument('task_id',type=int,help='The id number of the task you want to mark in progress')
+
+    parser_mark_complete = subparsers.add_parser('mark-complete',help='Command to mark a task complete')
+    parser_mark_complete.add_argument('task_id',type=int,help='The id number of the task you want to mark complete')
+
+    parser_list = subparsers.add_parser('list',help='Command to list all tasks or by status')
+    parser_list.add_argument('status',type=str,help='The status of the tasks you want to view',default=None,choices=['done','todo','in-progress'])
 
     args = parser.parse_args()
+
+    
 
 if __name__ == '__main__':
     main()
